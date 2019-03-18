@@ -1,0 +1,102 @@
+CS 2200 Spring 2018
+Project 4
+
+Name: Balkrishna Patel
+GT Username: baptel66
+
+Problem 1B
+----------
+
+/* Fix me */
+FIFO 1 CPU:
+# of Context Switches: 97
+Total execution time: 67.7 s
+Total time spent in READY state: 388.7 s
+
+FIFO 2 CPUs:
+# of Context Switches: 112
+Total execution time: 36.4 s
+Total time spent in READY state: 86.6 s
+
+FIFO 4 CPUs:
+# of Context Switches: 184
+Total execution time: 33.6 s
+Total time spent in READY state: 4.4 s
+
+Is there a linear relationship between the number of CPUs and total execution time? Why?
+    No there is no linear relationship between the number of CPUs and total execution
+    because initally from 1 to 2 CPUs ther total execution time is roughly halved but from
+    2 to 4 CPUs the execution time tapers off.  This plateau of performance comes from 
+    Amdal's Law that states performance of a program is hindered by how much the program
+    can by parallelized.  
+
+
+Problem 2B
+----------
+
+/* Fix me */
+Round Robin 1 CPU, quantum = 800ms(8):
+# of Context Switches: 135
+Total execution time: 67.6 s
+Total time spent in READY state: 325.1 s
+
+Round Robin 1 CPU, quantum 600ms(6):
+# of Context Switches: 160
+Total execution time: 67.7 s
+Total time spent in READY state: 315.7 s
+
+Round Robin 1 CPU, quantum 400ms(4):
+# of Context Switches: 198
+Total execution time: 69.8 s
+Total time spent in READY state: 328.0 s
+
+
+Round Robin 1 CPU, quantum 200ms(2):
+# of Context Switches: 356
+Total execution time: 68.4 s
+Total time spent in READY state: 306.3 s
+
+
+Why is the shortest timeslice possible not the best choice in a real OS?
+    Using the shortest possible timelsice in a real OS could result in the OS
+    spending its time doing context switches instead of actual work.
+
+
+Problem 3B
+----------
+
+/* Fix me */
+SRTF 1 CPU:
+# of Context Switches: 134
+Total execution time: 68.9 s
+Total time spent in READY state: 164.1 s
+
+While it is easy to simulate an SRTF in the simulator, it is essentially
+impossible to implement precisely in real life and is thus usually approximated.
+Why?
+    In the real world it is impossible to know how long a process will take to
+    execute, so an approximated SRTF is implemented where the accuracy of predicted
+    execution times goes up over time.  Another drawback with SRTF is starvation 
+    where if a true SRTF was implemented longer processes would never get to run.
+
+FIFO 1 CPU:
+# of Context Switches: 98
+Total execution time: 67.6 s
+Total time spent in READY state: 390.2 s
+
+Round Robin 1 CPU, 400ms(4):
+# of Context Switches: 197
+Total execution time: 76.2 s
+Total time spent in READY state: 380.1 s
+
+SRTF 1 CPU:
+# of Context Switches: 136
+Total execution time: 72.9 s
+Total time spent in READY state: 161.8 s
+
+Which algorithm had the lowest wait time with 1 CPU? Why?
+    SRTF had the lowest wait with 1 CPU.  This is because the smallest process 
+    (in terms of remaining time) is put before larger processes, this allows
+    means the larger processes only have to wait as for as long as the it takes 
+    the shorter processes to execute, making the convoy effect impossible.
+
